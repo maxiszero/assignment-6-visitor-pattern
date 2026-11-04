@@ -2,6 +2,9 @@ package filesystem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /** Dependency-free behavioral tests, with assertions enabled without -ea. */
 public final class VisitorTest {
@@ -63,6 +66,102 @@ public final class VisitorTest {
             expect(NullPointerException.class,
                     () -> new FileSystemWalker().walk(null, new RecordingVisitor()));
         });
+        run("size visitor sums nested files without counting directories twice", () -> {
+            SizeCalculatorVisitor visitor = new SizeCalculatorVisitor();
+            new FileSystemWalker().walk(sampleTree(), visitor);
+            equal(6000L, visitor.getTotalBytes());
+        });
+        run("an empty directory has zero content bytes", () -> {
+            SizeCalculatorVisitor visitor = new SizeCalculatorVisitor();
+            new FileSystemWalker().walk(new DirectoryNode("empty", List.of()), visitor);
+            equal(0L, visitor.getTotalBytes());
+        });
+        run("file sizes larger than int remain correct", () -> {
+            SizeCalculatorVisitor visitor = new SizeCalculatorVisitor();
+            new FileNode("large.bin", 3_000_000_000L).accept(visitor);
+            equal(3_000_000_000L, visitor.getTotalBytes());
+        });
+        run("size overflow is reported instead of returning a negative total", () -> {
+            SizeCalculatorVisitor visitor = new SizeCalculatorVisitor();
+            FileSystemElement root = new DirectoryNode("large", List.of(
+                    new FileNode("a", Long.MAX_VALUE), new FileNode("b", 1)));
+            expect(ArithmeticException.class, () -> new FileSystemWalker().walk(root, visitor));
+        });
+        run("search finds matching files in traversal order", () -> {
+            SearchVisitor visitor = new SearchVisitor(".txt");
+            new FileSystemWalker().walk(sampleTree(), visitor);
+            equal(List.of("README.txt", "notes.txt", "guide.txt"), names(visitor.getMatches()));
+        });
+        run("search also handles directory elements", () -> {
+            SearchVisitor visitor = new SearchVisitor("docs");
+            new FileSystemWalker().walk(sampleTree(), visitor);
+            equal(List.of("docs"), names(visitor.getMatches()));
+        });
+        run("case-insensitive search is independent of the machine locale", () -> {
+            Locale original = Locale.getDefault();
+            try {
+                Locale.setDefault(Locale.forLanguageTag("tr-TR"));
+                SearchVisitor visitor = new SearchVisitor("FILE");
+                new FileNode("file.txt", 1).accept(visitor);
+                equal(List.of("file.txt"), names(visitor.getMatches()));
+            } finally {
+                Locale.setDefault(original);
+            }
+        });
+        run("search returns an empty list when nothing matches", () -> {
+            SearchVisitor visitor = new SearchVisitor("missing");
+            new FileSystemWalker().walk(sampleTree(), visitor);
+            equal(List.of(), visitor.getMatches());
+        });
+        run("search rejects null and blank criteria", () -> {
+            expect(NullPointerException.class, () -> new SearchVisitor(null));
+            expect(IllegalArgumentException.class, () -> new SearchVisitor("  "));
+        });
+        run("search results are immutable snapshots", () -> {
+            SearchVisitor visitor = new SearchVisitor(".txt");
+            new FileNode("a.txt", 1).accept(visitor);
+            List<FileSystemElement> snapshot = visitor.getMatches();
+            expect(UnsupportedOperationException.class, snapshot::clear);
+            new FileNode("b.txt", 1).accept(visitor);
+            equal(List.of("a.txt"), names(snapshot));
+            equal(List.of("a.txt", "b.txt"), names(visitor.getMatches()));
+        });
+        run("fresh visitors isolate repeated operations on the same tree", () -> {
+            FileSystemElement root = sampleTree();
+            FileSystemWalker walker = new FileSystemWalker();
+            SizeCalculatorVisitor first = new SizeCalculatorVisitor();
+            SearchVisitor search = new SearchVisitor(".txt");
+            SizeCalculatorVisitor second = new SizeCalculatorVisitor();
+            walker.walk(root, first);
+            walker.walk(root, search);
+            walker.walk(root, second);
+            equal(6000L, first.getTotalBytes());
+            equal(6000L, second.getTotalBytes());
+            equal(3, search.getMatches().size());
+            equal("project", root.getName());
+        });
+        run("parallel traversals share immutable nodes but use independent visitors", () -> {
+            FileSystemElement root = sampleTree();
+            FileSystemWalker walker = new FileSystemWalker();
+            var executor = Executors.newFixedThreadPool(2);
+            try {
+                var size = executor.submit(() -> {
+                    SizeCalculatorVisitor visitor = new SizeCalculatorVisitor();
+                    walker.walk(root, visitor);
+                    return visitor.getTotalBytes();
+                });
+                var matches = executor.submit(() -> {
+                    SearchVisitor visitor = new SearchVisitor(".txt");
+                    walker.walk(root, visitor);
+                    return names(visitor.getMatches());
+                });
+                equal(6000L, size.get(5, TimeUnit.SECONDS));
+                equal(List.of("README.txt", "notes.txt", "guide.txt"),
+                        matches.get(5, TimeUnit.SECONDS));
+            } finally {
+                executor.shutdownNow();
+            }
+        });
         System.out.println("PASS: " + passed + " tests");
     }
 
@@ -70,6 +169,18 @@ public final class VisitorTest {
         test.run();
         passed++;
         System.out.println("PASS " + name);
+    }
+
+    private static FileSystemElement sampleTree() {
+        return new DirectoryNode("project", List.of(
+                new FileNode("README.txt", 1200),
+                new DirectoryNode("src", List.of(
+                        new FileNode("Main.java", 2400), new FileNode("notes.txt", 600))),
+                new DirectoryNode("docs", List.of(new FileNode("guide.txt", 1800)))));
+    }
+
+    private static List<String> names(List<FileSystemElement> elements) {
+        return elements.stream().map(FileSystemElement::getName).toList();
     }
 
     private static void equal(Object expected, Object actual) {
