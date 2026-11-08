@@ -162,6 +162,18 @@ public final class VisitorTest {
                 executor.shutdownNow();
             }
         });
+        run("the new visitor counts files and directories separately", () -> {
+            ElementCountVisitor visitor = new ElementCountVisitor();
+            new FileSystemWalker().walk(SampleFileSystem.create(), visitor);
+            equal(4, visitor.getFileCount());
+            equal(3, visitor.getDirectoryCount());
+        });
+        run("the root is counted even when a directory is empty", () -> {
+            ElementCountVisitor visitor = new ElementCountVisitor();
+            new FileSystemWalker().walk(new DirectoryNode("empty", List.of()), visitor);
+            equal(0, visitor.getFileCount());
+            equal(1, visitor.getDirectoryCount());
+        });
         System.out.println("PASS: " + passed + " tests");
     }
 
