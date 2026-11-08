@@ -1,0 +1,73 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide empty members
+interface FileSystemElement {
+  +getName(): String
+  +getChildren(): List<FileSystemElement>
+  +accept(visitor: FileSystemVisitor): void
+}
+interface FileSystemVisitor {
+  +visitFile(file: FileNode): void
+  +visitDirectory(directory: DirectoryNode): void
+}
+class FileNode {
+  -name: String
+  -sizeBytes: long
+  +getName(): String
+  +getSizeBytes(): long
+  +accept(visitor: FileSystemVisitor): void
+}
+class DirectoryNode {
+  -name: String
+  -children: List<FileSystemElement>
+  +getName(): String
+  +getChildren(): List<FileSystemElement>
+  +accept(visitor: FileSystemVisitor): void
+}
+class SizeCalculatorVisitor {
+  -totalBytes: long
+  +visitFile(file: FileNode): void
+  +visitDirectory(directory: DirectoryNode): void
+  +getTotalBytes(): long
+}
+class SearchVisitor {
+  -query: String
+  -matches: List<FileSystemElement>
+  +visitFile(file: FileNode): void
+  +visitDirectory(directory: DirectoryNode): void
+  +getMatches(): List<FileSystemElement>
+}
+class ElementCountVisitor {
+  -fileCount: int
+  -directoryCount: int
+  +visitFile(file: FileNode): void
+  +visitDirectory(directory: DirectoryNode): void
+  +getFileCount(): int
+  +getDirectoryCount(): int
+}
+class FileSystemWalker {
+  +walk(element: FileSystemElement, visitor: FileSystemVisitor): void
+}
+class Main
+class ExtensionDemo
+class SampleFileSystem
+
+FileSystemElement <|.. FileNode
+FileSystemElement <|.. DirectoryNode
+FileSystemVisitor <|.. SizeCalculatorVisitor
+FileSystemVisitor <|.. SearchVisitor
+FileSystemVisitor <|.. ElementCountVisitor
+FileSystemElement ..> FileSystemVisitor : accept parameter
+DirectoryNode --> "0..*" FileSystemElement : children
+FileSystemWalker ..> FileSystemElement : accept / getChildren
+FileSystemWalker ..> FileSystemVisitor
+Main ..> FileSystemWalker
+Main ..> SizeCalculatorVisitor
+Main ..> SearchVisitor
+Main ..> SampleFileSystem
+ExtensionDemo ..> FileSystemWalker
+ExtensionDemo ..> ElementCountVisitor
+ExtensionDemo ..> SampleFileSystem
+SampleFileSystem ..> DirectoryNode
+SampleFileSystem ..> FileNode
+@enduml

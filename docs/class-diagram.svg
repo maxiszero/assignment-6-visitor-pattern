@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="497" height="336" preserveAspectRatio="xMinYMin meet" viewBox="0 0 497 336" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="497" height="336"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-336)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="31" y="254" width="193" height="72" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="31.4" y="298" width="192.2" height="27.600000000000023" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,96%,96%); fill-rule: evenodd;"/>
+			<path d="M 31,298 L 224,298 Z" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<text x="109.193310546875" y="316" style="font-family: Arial, sans-serif; font-size: 7.4px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,632) scale(1,-1)">«interface»</text>
+			<text x="80.2723876953125" y="304" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10.3px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,608) scale(1,-1)">FileSystemElement</text>
+			<text x="39" y="286" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,572) scale(1,-1)">+ getName(): String</text>
+			<text x="39" y="274" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,548) scale(1,-1)">+ getChildren(): List&lt;FileSystemElement&gt;</text>
+			<text x="39" y="262" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,524) scale(1,-1)">+ accept(FileSystemVisitor): void</text>
+			<rect x="268" y="254" width="205" height="72" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="268.4" y="298" width="204.2" height="27.600000000000023" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,96%,96%); fill-rule: evenodd;"/>
+			<path d="M 268,298 L 473,298 Z" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<text x="352.193310546875" y="316" style="font-family: Arial, sans-serif; font-size: 7.4px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,632) scale(1,-1)">«interface»</text>
+			<text x="327.2807373046875" y="304" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10.3px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,608) scale(1,-1)">FileSystemVisitor</text>
+			<text x="276" y="286" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,572) scale(1,-1)">+ visitFile(FileNode): void</text>
+			<text x="276" y="274" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,548) scale(1,-1)">+ visitDirectory(DirectoryNode): void</text>
+			<rect x="31" y="148" width="193" height="63" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="31.4" y="190" width="192.2" height="20.599999999999994" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,96%,96%); fill-rule: evenodd;"/>
+			<path d="M 31,190 L 224,190 Z" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<text x="105.7533203125" y="196" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10.3px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,392) scale(1,-1)">FileNode</text>
+			<text x="39" y="178" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,356) scale(1,-1)">- sizeBytes: long</text>
+			<text x="39" y="166" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,332) scale(1,-1)">+ getSizeBytes(): long</text>
+			<text x="39" y="154" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,308) scale(1,-1)">+ accept(FileSystemVisitor): void</text>
+			<rect x="31" y="49" width="193" height="63" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="31.4" y="91" width="192.2" height="20.599999999999994" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,96%,96%); fill-rule: evenodd;"/>
+			<path d="M 31,91 L 224,91 Z" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<text x="92.01328125" y="97" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10.3px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,194) scale(1,-1)">DirectoryNode</text>
+			<text x="39" y="79" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,158) scale(1,-1)">- children: List&lt;FileSystemElement&gt;</text>
+			<text x="39" y="67" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,134) scale(1,-1)">+ getChildren(): List&lt;FileSystemElement&gt;</text>
+			<text x="39" y="55" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,110) scale(1,-1)">+ accept(FileSystemVisitor): void</text>
+			<rect x="268" y="161" width="205" height="63" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="268.4" y="203" width="204.2" height="20.599999999999994" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,96%,96%); fill-rule: evenodd;"/>
+			<path d="M 268,203 L 473,203 Z" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<text x="318.984912109375" y="209" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10.3px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,418) scale(1,-1)">SizeCalculatorVisitor</text>
+			<text x="276" y="191" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,382) scale(1,-1)">+ visitFile(FileNode): void</text>
+			<text x="276" y="179" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,358) scale(1,-1)">+ visitDirectory(DirectoryNode): void</text>
+			<text x="276" y="167" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,334) scale(1,-1)">+ getTotalBytes(): long</text>
+			<rect x="268" y="87" width="205" height="63" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="268.4" y="129" width="204.2" height="20.599999999999994" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,96%,96%); fill-rule: evenodd;"/>
+			<path d="M 268,129 L 473,129 Z" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<text x="337.29658203125" y="135" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10.3px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,270) scale(1,-1)">SearchVisitor</text>
+			<text x="276" y="117" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,234) scale(1,-1)">+ visitFile(FileNode): void</text>
+			<text x="276" y="105" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,210) scale(1,-1)">+ visitDirectory(DirectoryNode): void</text>
+			<text x="276" y="93" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,186) scale(1,-1)">+ getMatches(): List&lt;FileSystemElement&gt;</text>
+			<rect x="268" y="0" width="205" height="75" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="268.4" y="54" width="204.2" height="20.599999999999994" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(93%,96%,96%); fill-rule: evenodd;"/>
+			<path d="M 268,54 L 473,54 Z" style="stroke: rgb(67%,75%,81%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<text x="319.568310546875" y="60" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 10.3px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,120) scale(1,-1)">ElementCountVisitor</text>
+			<text x="276" y="42" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,84) scale(1,-1)">+ visitFile(FileNode): void</text>
+			<text x="276" y="30" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,60) scale(1,-1)">+ visitDirectory(DirectoryNode): void</text>
+			<text x="276" y="18" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,36) scale(1,-1)">+ getFileCount(): int</text>
+			<text x="276" y="6" style="font-family: Consolas, monospace; font-size: 7.85px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,12) scale(1,-1)">+ getDirectoryCount(): int</text>
+			<path d="M 31,177 L 15,177 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<path d="M 31,76 L 15,76 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<path d="M 15,76 L 15,284 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<path d="M 15,284 L 23,284 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<polygon points="23 287.5, 31 284, 23 280.5" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 473,189 L 487,189 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<path d="M 473,115 L 487,115 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<path d="M 473,34 L 487,34 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<path d="M 487,34 L 487,284 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<path d="M 487,284 L 481,284 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<polygon points="481 280.5, 473 284, 481 287.5" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 224,283 L 268,283 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; stroke-dasharray: 4, 3;"/>
+			<polyline points="260 286.5, 268 283, 260 279.5" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; fill: None; fill-rule: evenodd;"/>
+			<text x="234.951416015625" y="292" style="font-family: Arial, sans-serif; font-size: 7.5px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,584) scale(1,-1)">accept</text>
+			<path d="M 224,80 L 246,80 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<path d="M 246,80 L 246,243 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<path d="M 246,243 L 206,243 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<path d="M 206,243 L 206,254 Z" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85;"/>
+			<polyline points="202.5 246, 206 254, 209.5 246" style="stroke: rgb(27%,38%,47%); stroke-linecap: butt; stroke-width: 0.85; fill: None; fill-rule: evenodd;"/>
+			<text x="156.394287109375" y="236" style="font-family: Arial, sans-serif; font-size: 7.5px;fill: rgb(9%,16%,25%); stroke:none;" transform="translate(0,472) scale(1,-1)">children 0..*</text>
+		</g>
+	</g>
+</svg>
